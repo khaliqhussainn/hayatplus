@@ -2,71 +2,142 @@ export const ingredients = [
   {
     key: "ginger",
     name: "Ginger",
+    label: "Ginger Juice",
+    image: "/images/formula/ingredient-ginger.png",
     description: "Warms the body and supports healthy circulation.",
   },
   {
     key: "garlic",
     name: "Garlic",
+    label: "Garlic Juice",
+    image: "/images/formula/ingredient-garlic.png",
     description: "A time-honoured root known to support heart wellness.",
   },
   {
     key: "lemon",
     name: "Lemon",
+    label: "Lemon Juice",
+    image: "/images/formula/ingredient-lemon.png",
     description: "Bright citrus that supports immunity and digestion.",
   },
   {
     key: "honey",
     name: "Honey",
+    label: "Honey",
+    image: "/images/formula/ingredient-honey.png",
     description: "Naturally soothing sweetness with antioxidant support.",
   },
   {
     key: "acv",
     name: "Apple Cider Vinegar",
+    label: "Apple Cider Vinegar",
+    image: "/images/formula/ingredient-acv.png",
     description: "A daily wellness staple for balance and vitality.",
   },
 ] as const;
 
-export const benefits = [
+export const heroTrustBadges = [
+  { icon: "leaf", label: "100% Natural" },
+  { icon: "slash", label: "No Added Sugars" },
+  { icon: "droplet", label: "No Artificial Preservatives" },
+] as const;
+
+export const heroBenefits = [
   {
     icon: "heart",
     title: "Supports Heart Health",
-    description: "Formulated to nurture everyday cardiovascular wellness.",
-  },
-  {
-    icon: "activity",
-    title: "Supports Healthy Circulation",
-    description: "Encourages steady, healthy blood flow throughout the day.",
-  },
-  {
-    icon: "shield",
-    title: "Immune Support",
-    description: "A blend of botanicals that help fortify natural defences.",
-  },
-  {
-    icon: "leaf",
-    title: "100% Natural Ingredients",
-    description: "Nothing artificial — just five trusted botanicals.",
+    description: "Helps maintain a healthy heart and cardiovascular function.",
   },
   {
     icon: "droplet",
-    title: "Herbal Formula",
-    description: "Crafted using traditional herbal wisdom, refined for today.",
+    title: "Promotes Healthy Circulation",
+    description: "Supports healthy blood flow and improves circulation naturally.",
   },
   {
-    icon: "check",
-    title: "No Artificial Preservatives",
-    description: "Clean, honest formulation from start to finish.",
+    icon: "shield",
+    title: "Supports Immune Function",
+    description: "Rich in antioxidants that help strengthen immunity.",
   },
   {
-    icon: "sunrise",
+    icon: "activity",
+    title: "Helps Maintain Healthy Blood Pressure",
+    description: "May help support healthy blood pressure levels already within the normal range.",
+  },
+  {
+    icon: "feather",
+    title: "Detoxifies Naturally",
+    description: "Helps cleanse the body by flushing out toxins and supporting liver health.",
+  },
+  {
+    icon: "sun",
+    title: "Supports Digestive Health",
+    description: "Aids digestion and promotes a healthy gut naturally.",
+  },
+  {
+    icon: "zap",
+    title: "Boosts Energy and Vitality",
+    description: "Helps reduce fatigue and supports natural energy levels.",
+  },
+] as const;
+
+export const problems = [
+  {
+    key: "heart-wellness",
+    title: "Heart Wellness",
+    image: "/images/problems/problem-heart-wellness.jpg",
+    icon: "heart",
+  },
+  {
+    key: "healthy-circulation",
+    title: "Healthy Circulation",
+    image: "/images/problems/problem-healthy-circulation.jpg",
+    icon: "droplet",
+  },
+  {
+    key: "blood-pressure",
+    title: "Blood Pressure Support",
+    image: "/images/problems/problem-blood-pressure.jpg",
+    icon: "heart",
+  },
+  {
+    key: "daily-wellness",
     title: "Daily Wellness",
-    description: "A simple ritual designed to fit effortlessly into your day.",
+    image: "/images/problems/problem-daily-wellness.jpg",
+    icon: "sun",
   },
   {
-    icon: "care",
-    title: "Made with Care",
-    description: "Small-batch crafted with attention to every detail.",
+    key: "immune-support",
+    title: "Immune Support",
+    image: "/images/problems/problem-immune-support.jpg",
+    icon: "shield",
   },
+  {
+    key: "healthy-lifestyle",
+    title: "Healthy Lifestyle",
+    image: "/images/problems/problem-healthy-lifestyle.jpg",
+    icon: "feather",
+  },
+] as const;
+
+export const whyChooseLeft = [
+  { icon: "leaf", label: "100% Natural Ingredients" },
+  { icon: "feather", label: "Herbal Formula" },
+  { icon: "slash", label: "No Artificial Preservatives" },
+  { icon: "droplet", label: "No Added Sugars" },
+] as const;
+
+export const whyChooseRight = [
+  { icon: "heart", label: "Supports Heart Health" },
+  { icon: "activity", label: "Promotes Healthy Circulation" },
+  { icon: "shield", label: "Supports Immune Function" },
+  { icon: "sun", label: "Daily Wellness Support" },
+] as const;
+
+export const formulaProcess = [
+  { icon: "leaf", label: "Fresh Ingredients" },
+  { icon: "filter", label: "Carefully Extracted" },
+  { icon: "scale", label: "Balanced Formula" },
+  { icon: "zap", label: "Daily Wellness" },
 ] as const;
 
 export const howToUseSteps = [
@@ -77,42 +148,51 @@ export const howToUseSteps = [
   },
   {
     icon: "mix",
-    title: "Mix with Water",
-    description: "Mix one tablespoon with half a glass of drinking water.",
+    title: "Mix 1 tablespoon (15ml)",
+    description: "Mix with ½ glass of drinking water.",
   },
   {
     icon: "daily",
-    title: "Consume Daily",
-    description: "Enjoy once daily as part of your everyday wellness ritual.",
+    title: "Consume Once Daily",
+    description: "Preferably before breakfast, as part of your everyday ritual.",
   },
 ] as const;
 
-export const nutritionFacts = [
-  { label: "Ginger Extract", value: "Included" },
-  { label: "Garlic Extract", value: "Included" },
-  { label: "Lemon Extract", value: "Included" },
-  { label: "Honey", value: "Included" },
-  { label: "Apple Cider Vinegar", value: "Included" },
-] as const;
+export const nutritionSnapshot = {
+  servingSize: "15 ml",
+  facts: [
+    { label: "Energy", value: "15 kcal" },
+    { label: "Total Carbohydrates", value: "4 g" },
+    { label: "Total Sugars", value: "3 g" },
+    { label: "Protein", value: "< 0.5 g" },
+    { label: "Fat", value: "0 g" },
+  ],
+} as const;
 
 export const testimonials = [
   {
-    name: "Amina R.",
-    role: "Daily user, 6 months",
+    name: "Adeel",
+    age: 42,
+    photo: "/images/testimonials/testimonial-1.jpg",
+    rating: 5,
     quote:
-      "Hayat+ has become part of my morning ritual. Simple, natural, and it just feels right.",
+      "Hayat+ has become a part of my daily routine. I feel more active, my digestion is better and my energy levels have improved naturally.",
   },
   {
-    name: "Farhan K.",
-    role: "Daily user, 1 year",
+    name: "Amina",
+    age: 35,
+    photo: "/images/testimonials/testimonial-2.jpg",
+    rating: 5,
+    quote:
+      "Simple, natural, and it just feels right. It's the one wellness habit I've actually stuck with.",
+  },
+  {
+    name: "Farhan",
+    age: 29,
+    photo: "/images/testimonials/testimonial-3.jpg",
+    rating: 5,
     quote:
       "I appreciate how clean the formula is. Five ingredients, no clutter, no compromises.",
-  },
-  {
-    name: "Sana M.",
-    role: "Daily user, 8 months",
-    quote:
-      "Elegant packaging, honest ingredients. It feels premium without being complicated.",
   },
 ] as const;
 
@@ -125,7 +205,7 @@ export const faqs = [
   {
     question: "How do I take Hayat+?",
     answer:
-      "Shake well, mix one tablespoon with half a glass of drinking water, and consume once daily.",
+      "Shake well, mix one tablespoon (15ml) with half a glass of drinking water, and consume once daily, preferably before breakfast.",
   },
   {
     question: "Is Hayat+ suitable for daily use?",
@@ -135,7 +215,7 @@ export const faqs = [
   {
     question: "Does Hayat+ contain artificial preservatives?",
     answer:
-      "No. Hayat+ is made without artificial preservatives, colours, or flavours.",
+      "No. Hayat+ is made without artificial preservatives, colours, flavours, or added sugars.",
   },
   {
     question: "How should I store the bottle?",
@@ -151,16 +231,39 @@ export const contactInfo = {
 } as const;
 
 export const socialLinks = [
+  { key: "whatsapp", href: "https://wa.me/923001234567", label: "WhatsApp" },
   { key: "instagram", href: "https://instagram.com/hayatplus", label: "Instagram" },
-  { key: "facebook", href: "https://facebook.com/hayatplus", label: "Facebook" },
-  { key: "twitter", href: "https://twitter.com/hayatplus", label: "Twitter" },
+  { key: "email", href: "mailto:care@hayatplus.com", label: "Email" },
+  { key: "phone", href: "tel:+922111122233", label: "Phone" },
 ] as const;
 
 export const navLinks = [
+  { href: "#top", label: "Home" },
   { href: "#ingredients", label: "Ingredients" },
-  { href: "#why-choose", label: "Benefits" },
+  { href: "#benefits", label: "Benefits" },
   { href: "#how-to-use", label: "How to Use" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ] as const;
+
+export const footerLinks = {
+  quickLinks: [
+    { href: "#top", label: "Home" },
+    { href: "#ingredients", label: "Ingredients" },
+    { href: "#benefits", label: "Benefits" },
+    { href: "#how-to-use", label: "How to Use" },
+  ],
+  company: [
+    { href: "#about", label: "About Us" },
+    { href: "#ingredients", label: "Our Formula" },
+    { href: "#testimonials", label: "Testimonials" },
+    { href: "#contact", label: "Contact" },
+  ],
+  support: [
+    { href: "#faq", label: "FAQ" },
+    { href: "#contact", label: "Shipping & Delivery" },
+    { href: "#contact", label: "Returns & Refunds" },
+    { href: "#contact", label: "Privacy Policy" },
+  ],
+} as const;

@@ -1,47 +1,83 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { FiArrowRight, FiPlay } from "react-icons/fi";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  FiArrowRight,
+  FiPlay,
+  FiFeather,
+  FiSlash,
+  FiDroplet,
+  FiHeart,
+  FiActivity,
+  FiShield,
+  FiSun,
+  FiZap,
+} from "react-icons/fi";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/ui/FadeIn";
-import BottleIllustration from "@/components/illustrations/BottleIllustration";
-import {
-  GingerIllustration,
-  LemonIllustration,
-  HoneyIllustration,
-} from "@/components/illustrations/IngredientIllustrations";
+import HeroBenefitList from "@/components/sections/HeroBenefitList";
+import { heroTrustBadges, heroBenefits } from "@/lib/data";
+
+const badgeIconMap = {
+  leaf: FiFeather,
+  slash: FiSlash,
+  droplet: FiDroplet,
+};
+
+const benefitIconMap = {
+  heart: FiHeart,
+  droplet: FiDroplet,
+  shield: FiShield,
+  activity: FiActivity,
+  feather: FiFeather,
+  sun: FiSun,
+  zap: FiZap,
+};
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const sceneRef = useRef<HTMLDivElement>(null);
+  const imageWrapRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="top" ref={ref} className="relative overflow-hidden bg-beige">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-beige to-beige" />
+    <section id="top" className="relative overflow-hidden bg-white">
+      <Image
+        src="/images/decorative/leaf-decoration-left.png"
+        alt=""
+        width={420}
+        height={420}
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute -top-16 -left-16 z-0 w-32 sm:w-40 opacity-50"
+      />
+      <Image
+        src="/images/decorative/leaf-decoration-right.png"
+        alt=""
+        width={420}
+        height={420}
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute -bottom-16 -right-16 z-0 w-32 sm:w-40 opacity-50 rotate-180"
+      />
 
-      <Container className="relative py-20 sm:py-28 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="flex flex-col gap-7 order-2 lg:order-1">
+      <Container className="relative py-16 sm:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-16 items-center">
+          <div className="flex flex-col gap-6">
             <FadeIn>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-forest/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-forest">
-                Natural Herbal Formula
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-forest/20 bg-beige px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-forest">
+                <FiFeather size={13} /> Natural Herbal Formula
               </span>
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.08] text-ink max-w-xl">
-                Nature&apos;s Daily Support for a Healthy Heart
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.2rem] font-bold leading-[1.1] text-ink max-w-lg">
+                Nature&apos;s Daily Support for a{" "}
+                <span className="text-forest">Healthy Heart</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <p className="text-base sm:text-lg text-ink/70 leading-relaxed max-w-lg">
+              <p className="text-base sm:text-lg text-ink/70 leading-relaxed max-w-md">
                 Hayat+ Heart Tonic is a carefully crafted herbal blend made
                 from Ginger, Garlic, Lemon, Honey and Apple Cider Vinegar to
                 support heart health, healthy circulation, immune wellness
@@ -50,8 +86,8 @@ export default function Hero() {
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Button href="#product" variant="primary" icon={<FiArrowRight />}>
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <Button href="#contact" variant="primary" icon={<FiArrowRight />}>
                   Shop Now
                 </Button>
                 <Button href="#ingredients" variant="secondary" icon={<FiPlay />}>
@@ -59,40 +95,77 @@ export default function Hero() {
                 </Button>
               </div>
             </FadeIn>
+
+            <FadeIn delay={0.4}>
+              <div className="flex flex-wrap items-center gap-6 pt-4 border-t border-line max-w-md">
+                {heroTrustBadges.map((badge) => {
+                  const Icon = badgeIconMap[badge.icon];
+                  return (
+                    <div key={badge.label} className="flex flex-col items-center gap-2 text-center">
+                      <span className="flex items-center justify-center w-11 h-11 rounded-full border border-line text-forest">
+                        <Icon size={17} />
+                      </span>
+                      <span className="text-[11px] font-medium text-ink/60 max-w-[80px] leading-tight">
+                        {badge.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </FadeIn>
           </div>
 
-          <div className="relative order-1 lg:order-2 flex items-center justify-center">
-            <motion.div
-              style={{ y: parallaxY }}
-              className="absolute -top-6 -left-2 sm:left-4 text-sage animate-float"
-            >
-              <LemonIllustration className="w-14 h-14 sm:w-16 sm:h-16 opacity-80" />
-            </motion.div>
-            <motion.div
-              style={{ y: parallaxY }}
-              className="absolute top-1/3 -right-2 sm:right-6 animate-float-slow"
-            >
-              <GingerIllustration className="w-16 h-16 sm:w-20 sm:h-20 opacity-70" />
-            </motion.div>
-            <motion.div
-              style={{ y: parallaxY }}
-              className="absolute bottom-4 left-6 sm:left-10 animate-float"
-            >
-              <HoneyIllustration className="w-12 h-12 sm:w-14 sm:h-14 opacity-70" />
-            </motion.div>
+          <div ref={sceneRef} className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 items-center">
+              <motion.div
+                ref={imageWrapRef}
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative mx-auto w-full max-w-[360px] lg:max-w-none animate-float-slow"
+              >
+                <div className="absolute inset-0 blur-3xl bg-sage/15 rounded-full scale-90" />
+                <Image
+                  src="/images/hero/hero-product-ingredients.jpg"
+                  alt="Hayat+ Heart Tonic bottle surrounded by ginger, garlic, lemon, honey and apple cider vinegar"
+                  width={1200}
+                  height={1200}
+                  priority
+                  className="relative w-full h-auto rounded-[18px] shadow-xl"
+                />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-[220px] sm:w-[280px] lg:w-[340px] animate-float"
-            >
-              <div className="absolute inset-0 blur-3xl bg-forest/10 rounded-full scale-90" />
-              <BottleIllustration className="relative w-full h-auto drop-shadow-2xl" />
-            </motion.div>
+              <div className="hidden lg:block">
+                <HeroBenefitList imageWrapRef={imageWrapRef} sceneRef={sceneRef} />
+              </div>
+            </div>
+
+            <div className="lg:hidden mt-8">
+              <HeroBenefitMobileGrid />
+            </div>
           </div>
         </div>
       </Container>
     </section>
+  );
+}
+
+function HeroBenefitMobileGrid() {
+  return (
+    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      {heroBenefits.map((benefit) => {
+        const Icon = benefitIconMap[benefit.icon];
+        return (
+          <li key={benefit.title} className="flex items-start gap-2.5">
+            <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-line text-forest">
+              <Icon size={14} />
+            </span>
+            <span className="text-xs font-semibold text-ink leading-tight pt-1.5">
+              {benefit.title}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

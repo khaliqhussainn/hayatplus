@@ -45,8 +45,8 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="#product" variant="primary">
-            Shop Now
+          <Button href="#contact" variant="primary">
+            Order Now
           </Button>
         </div>
 
@@ -79,8 +79,8 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button href="#product" variant="primary" className="w-full mt-2">
-                Shop Now
+              <Button href="#contact" variant="primary" className="w-full mt-2">
+                Order Now
               </Button>
             </Container>
           </motion.div>

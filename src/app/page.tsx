@@ -1,11 +1,9 @@
 import Hero from "@/components/sections/Hero";
-import Ingredients from "@/components/sections/Ingredients";
-import WhyChoose from "@/components/sections/WhyChoose";
-import ProductShowcase from "@/components/sections/ProductShowcase";
-import HowToUse from "@/components/sections/HowToUse";
-import Nutrition from "@/components/sections/Nutrition";
+import Problems from "@/components/sections/Problems";
+import WhyChooseFormula from "@/components/sections/WhyChooseFormula";
+import FeatureRow from "@/components/sections/FeatureRow";
+import CareBanner from "@/components/sections/CareBanner";
 import AboutFormula from "@/components/sections/AboutFormula";
-import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 
@@ -13,13 +11,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Ingredients />
-      <WhyChoose />
-      <ProductShowcase />
-      <HowToUse />
-      <Nutrition />
+      <Problems />
+      <WhyChooseFormula />
+      <FeatureRow />
+      <CareBanner />
       <AboutFormula />
-      <Testimonials />
       <FAQ />
       <Contact />
     </>

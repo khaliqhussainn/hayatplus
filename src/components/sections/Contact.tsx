@@ -57,17 +57,19 @@ export default function Contact() {
 
         <FadeIn delay={0.3}>
           <div className="mt-10 flex justify-center gap-3">
-            {socialLinks.map((social) => (
-              <a
-                key={social.key}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium text-ink/60 hover:text-forest transition-colors underline underline-offset-4"
-              >
-                {social.label}
-              </a>
-            ))}
+            {socialLinks
+              .filter((social) => social.key === "instagram")
+              .map((social) => (
+                <a
+                  key={social.key}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-medium text-ink/60 hover:text-forest transition-colors underline underline-offset-4"
+                >
+                  Follow us on {social.label}
+                </a>
+              ))}
           </div>
         </FadeIn>
       </Container>
