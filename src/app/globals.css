@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #ffffff;
+  --color-forest: #2e6b4a;
+  --color-forest-dark: #234f38;
+  --color-sage: #7c9f7b;
+  --color-beige: #f7f6f2;
+  --color-gold: #c9a15b;
+  --color-ink: #202020;
+  --color-line: #e8e8e8;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-forest: var(--color-forest);
+  --color-forest-dark: var(--color-forest-dark);
+  --color-sage: var(--color-sage);
+  --color-beige: var(--color-beige);
+  --color-gold: var(--color-gold);
+  --color-ink: var(--color-ink);
+  --color-line: var(--color-line);
+
+  --font-heading: var(--font-manrope);
+  --font-body: var(--font-inter);
+
+  --radius-premium: 18px;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-primary);
+  color: var(--color-ink);
+  font-family: var(--font-body), Inter, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), Manrope, sans-serif;
+}
+
+::selection {
+  background: var(--color-sage);
+  color: #ffffff;
+}
