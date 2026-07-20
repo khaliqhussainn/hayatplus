@@ -43,25 +43,41 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden bg-white">
-      <Image
-        src="/images/decorative/leaf-decoration-left.png"
-        alt=""
-        width={420}
-        height={420}
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute -top-16 -left-16 z-0 w-32 sm:w-40 opacity-50"
-      />
-      <Image
-        src="/images/decorative/leaf-decoration-right.png"
-        alt=""
-        width={420}
-        height={420}
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute -bottom-16 -right-16 z-0 w-32 sm:w-40 opacity-50 rotate-180"
-      />
+      <div className="pointer-events-none select-none absolute inset-0 z-0 hidden lg:block">
+        <Image
+          src="/images/hero/hero-background-leaves.jpg"
+          alt=""
+          fill
+          priority
+          aria-hidden="true"
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      <div className="pointer-events-none select-none absolute inset-x-0 top-0 h-44 z-0 lg:hidden">
+        <Image
+          src="/images/hero/hero-background-leaves.jpg"
+          alt=""
+          fill
+          priority
+          aria-hidden="true"
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+      </div>
+      <div className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-44 z-0 lg:hidden">
+        <Image
+          src="/images/hero/hero-background-leaves.jpg"
+          alt=""
+          fill
+          aria-hidden="true"
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+      </div>
 
-      <Container className="relative py-16 sm:py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-16 items-center">
+      <Container className="relative z-10 py-16 sm:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] gap-16 items-center">
           <div className="flex flex-col gap-6">
             <FadeIn>
               <span className="inline-flex w-fit items-center gap-2 rounded-full border border-forest/20 bg-beige px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-forest">
@@ -116,13 +132,13 @@ export default function Hero() {
           </div>
 
           <div ref={sceneRef} className="relative">
-            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
               <motion.div
                 ref={imageWrapRef}
                 initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="relative mx-auto w-full max-w-[360px] lg:max-w-none animate-float-slow"
+                className="relative mx-auto w-full max-w-[440px] lg:max-w-none animate-float-slow"
               >
                 <div className="absolute inset-0 blur-3xl bg-sage/15 rounded-full scale-90" />
                 <Image
