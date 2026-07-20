@@ -126,12 +126,12 @@ export default function Hero() {
               >
                 <div className="absolute inset-0 blur-3xl bg-sage/15 rounded-full scale-90" />
                 <Image
-                  src="/images/hero/hero-product-ingredients.jpg"
+                  src="/images/hero/hero-product-ingredients.png"
                   alt="Hayat+ Heart Tonic bottle surrounded by ginger, garlic, lemon, honey and apple cider vinegar"
                   width={1200}
                   height={1200}
                   priority
-                  className="relative w-full h-auto rounded-[18px] shadow-xl"
+                  className="relative w-full h-auto drop-shadow-2xl"
                 />
               </motion.div>
 
