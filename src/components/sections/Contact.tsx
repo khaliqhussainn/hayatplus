@@ -56,9 +56,9 @@ export default function Contact() {
         </div>
 
         <FadeIn delay={0.3}>
-          <div className="mt-10 flex justify-center gap-3">
+          <div className="mt-10 flex justify-center gap-6">
             {socialLinks
-              .filter((social) => social.key === "instagram")
+              .filter((social) => social.key === "instagram" || social.key === "facebook")
               .map((social) => (
                 <a
                   key={social.key}

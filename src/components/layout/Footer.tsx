@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { FiMessageCircle, FiInstagram, FiMail, FiPhone } from "react-icons/fi";
+import {
+  FiMessageCircle,
+  FiInstagram,
+  FiFacebook,
+  FiMail,
+  FiPhone,
+} from "react-icons/fi";
 import Container from "@/components/ui/Container";
 import { footerLinks, socialLinks } from "@/lib/data";
 
 const socialIconMap = {
   whatsapp: FiMessageCircle,
   instagram: FiInstagram,
+  facebook: FiFacebook,
   email: FiMail,
   phone: FiPhone,
 };

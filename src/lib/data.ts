@@ -225,16 +225,25 @@ export const faqs = [
 ] as const;
 
 export const contactInfo = {
-  whatsapp: "+92 300 1234567",
-  email: "care@hayatplus.com",
-  phone: "+92 21 111 222 333",
+  whatsapp: "+92 309 3868046",
+  email: "hayaatpluss@gmail.com",
+  phone: "+92 309 3868046",
 } as const;
 
 export const socialLinks = [
-  { key: "whatsapp", href: "https://wa.me/923001234567", label: "WhatsApp" },
-  { key: "instagram", href: "https://instagram.com/hayatplus", label: "Instagram" },
-  { key: "email", href: "mailto:care@hayatplus.com", label: "Email" },
-  { key: "phone", href: "tel:+922111122233", label: "Phone" },
+  { key: "whatsapp", href: "https://wa.me/923093868046", label: "WhatsApp" },
+  {
+    key: "instagram",
+    href: "https://www.instagram.com/hayaatpluss?igsh=MTUzanJtZDN5cG9pNg==",
+    label: "Instagram",
+  },
+  {
+    key: "facebook",
+    href: "https://www.facebook.com/share/1EpnCdyWQt/",
+    label: "Facebook",
+  },
+  { key: "email", href: "mailto:hayaatpluss@gmail.com", label: "Email" },
+  { key: "phone", href: "tel:+923093868046", label: "Phone" },
 ] as const;
 
 export const navLinks = [
