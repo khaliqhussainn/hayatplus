@@ -1,12 +1,5 @@
 import Image from "next/image";
-import { Dancing_Script } from "next/font/google";
 import FadeIn from "@/components/ui/FadeIn";
-
-const script = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-});
 
 export default function CareBanner() {
   return (
@@ -34,9 +27,13 @@ export default function CareBanner() {
               No shortcuts. No unnecessary additives. Just pure ingredients
               for your heart, your health, and your life.
             </p>
-            <span className={`${script.className} text-4xl text-forest mt-2`}>
-              Hayat+
-            </span>
+            <Image
+              src="/images/logo/hayat-logo.png"
+              alt="Hayat+"
+              width={900}
+              height={293}
+              className="h-9 w-auto self-start mt-2"
+            />
           </div>
         </FadeIn>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import Container from "@/components/ui/Container";
@@ -28,8 +29,15 @@ export default function Header() {
       }`}
     >
       <Container className="flex items-center justify-between py-5">
-        <Link href="#top" className="text-xl font-extrabold tracking-tight text-forest">
-          Hayat<span className="text-gold">+</span>
+        <Link href="#top" className="flex items-center">
+          <Image
+            src="/images/logo/hayat-logo.png"
+            alt="Hayat+"
+            width={900}
+            height={293}
+            priority
+            className="h-8 sm:h-9 w-auto"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-9">

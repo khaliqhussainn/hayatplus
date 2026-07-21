@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   FiMessageCircle,
   FiInstagram,
@@ -50,9 +51,13 @@ export default function Footer() {
       <Container className="py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="flex flex-col gap-4">
-            <span className="text-xl font-extrabold tracking-tight text-forest">
-              Hayat<span className="text-gold">+</span>
-            </span>
+            <Image
+              src="/images/logo/hayat-logo.png"
+              alt="Hayat+"
+              width={900}
+              height={293}
+              className="h-10 w-auto self-start"
+            />
             <p className="text-sm text-ink/60 leading-relaxed max-w-xs">
               Natural herbal support for a healthier you.
             </p>
