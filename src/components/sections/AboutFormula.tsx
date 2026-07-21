@@ -56,13 +56,13 @@ export default function AboutFormula() {
 
           <FadeIn delay={0.15}>
             <div className="relative flex items-center justify-center">
-              <div className="absolute w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-white/10 blur-3xl" />
+              <div className="absolute w-80 h-80 sm:w-[26rem] sm:h-[26rem] rounded-full bg-white/10 blur-3xl" />
               <Image
-                src="/images/formula/bottle-standing.png"
-                alt="Hayat+ Heart Tonic bottle"
-                width={700}
-                height={1100}
-                className="relative w-[200px] sm:w-[240px] h-auto animate-float-slow drop-shadow-2xl"
+                src="/images/hero/hero-product-ingredients.png"
+                alt="Hayat+ Heart Tonic bottle surrounded by ginger, garlic, lemon, honey and apple cider vinegar"
+                width={1200}
+                height={1200}
+                className="relative w-[280px] sm:w-[380px] lg:w-[460px] xl:w-[520px] h-auto drop-shadow-2xl"
               />
             </div>
           </FadeIn>
