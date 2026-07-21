@@ -47,25 +47,25 @@ export default function WhyChooseFormula() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="flex items-center justify-center lg:justify-start gap-2.5 sm:gap-4 overflow-x-auto pb-2 -mx-6 px-6 lg:mx-0 lg:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {ingredients.map((ingredient, index) => (
-                  <div key={ingredient.key} className="flex items-center gap-3 sm:gap-4">
-                    <div className="flex flex-col items-center gap-2 text-center">
-                      <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white border border-line overflow-hidden">
+                  <div key={ingredient.key} className="flex items-center gap-2.5 sm:gap-4 flex-shrink-0">
+                    <div className="flex flex-col items-center gap-2 text-center w-14 sm:w-20">
+                      <div className="relative w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-white border border-line overflow-hidden flex-shrink-0">
                         <Image
                           src={ingredient.image}
                           alt={ingredient.name}
                           fill
                           sizes="80px"
-                          className="object-contain p-2.5"
+                          className="object-contain p-2 sm:p-2.5"
                         />
                       </div>
-                      <span className="text-xs font-semibold text-ink max-w-[80px] leading-tight">
+                      <span className="text-[11px] sm:text-xs font-semibold text-ink leading-tight">
                         {ingredient.label}
                       </span>
                     </div>
                     {index < ingredients.length - 1 && (
-                      <span className="text-lg font-bold text-gold pb-6">+</span>
+                      <span className="text-lg font-bold text-gold pb-6 flex-shrink-0">+</span>
                     )}
                   </div>
                 ))}
