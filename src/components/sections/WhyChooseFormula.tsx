@@ -57,7 +57,7 @@ export default function WhyChooseFormula() {
                           alt={ingredient.name}
                           fill
                           sizes="80px"
-                          className="object-cover p-2"
+                          className="object-contain p-2.5"
                         />
                       </div>
                       <span className="text-xs font-semibold text-ink max-w-[80px] leading-tight">
