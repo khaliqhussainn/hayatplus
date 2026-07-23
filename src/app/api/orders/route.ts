@@ -5,6 +5,7 @@ import {
   generateOrderNumber,
   buildOwnerNotificationEmail,
   buildCustomerConfirmationEmail,
+  insertOrder,
   type OrderPayload,
 } from "@/lib/orders";
 
@@ -33,6 +34,8 @@ export async function POST(request: Request) {
   }
 
   const orderNumber = generateOrderNumber();
+
+  await insertOrder(orderNumber, payload);
 
   const apiKey = process.env.RESEND_API_KEY;
   if (apiKey) {

@@ -235,10 +235,9 @@ export const product = {
   image: "/images/hero/hero-product-ingredients.png",
 } as const;
 
-// TODO: replace with real pricing before launch (currency: PKR)
 export const productSizes = [
-  { id: "250ml", label: "250 ML", price: 1200 },
-  { id: "500ml", label: "500 ML", price: 2200 },
+  { id: "250ml", label: "250 ML", price: 1700 },
+  { id: "500ml", label: "500 ML", price: 3000 },
 ] as const;
 
 export type ProductSizeId = (typeof productSizes)[number]["id"];

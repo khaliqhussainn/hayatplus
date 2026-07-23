@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -63,13 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
-      <body className="antialiased bg-primary text-ink">
-        <CartProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
-      </body>
+      <body className="antialiased bg-primary text-ink">{children}</body>
     </html>
   );
 }

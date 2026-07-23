@@ -1,30 +1,68 @@
-import { productSizes, bankDetails, ProductSizeId, PaymentMethodId } from "@/lib/data";
+import type postgres from "postgres";
+import { productSizes, bankDetails } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
+import { getDb } from "@/lib/db";
+import type { OrderItem, OrderPayload, OrderRecord, OrderStatus } from "@/lib/order-types";
 
-export interface OrderCustomer {
-  name: string;
-  phone: string;
-  email: string;
-  address: string;
-  city: string;
-}
-
-export interface OrderItem {
-  sizeId: ProductSizeId;
-  qty: number;
-}
-
-export interface OrderPayload {
-  customer: OrderCustomer;
-  items: OrderItem[];
-  paymentMethod: PaymentMethodId;
-  subtotal: number;
-}
+export * from "@/lib/order-types";
 
 export function generateOrderNumber(): string {
   const datePart = Date.now().toString(36).toUpperCase();
   const randomPart = Math.random().toString(36).slice(2, 5).toUpperCase();
   return `HP-${datePart}${randomPart}`;
+}
+
+/**
+ * Best-effort insert — returns false (rather than throwing) if there's no
+ * database configured or the write fails, so order placement never blocks
+ * on persistence.
+ */
+export async function insertOrder(
+  orderNumber: string,
+  order: OrderPayload
+): Promise<boolean> {
+  const sql = getDb();
+  if (!sql) return false;
+
+  try {
+    await sql`
+      INSERT INTO orders (
+        order_number, customer_name, customer_phone, customer_email,
+        customer_address, customer_city, payment_method, subtotal, items
+      ) VALUES (
+        ${orderNumber}, ${order.customer.name}, ${order.customer.phone},
+        ${order.customer.email}, ${order.customer.address}, ${order.customer.city},
+        ${order.paymentMethod}, ${order.subtotal}, ${sql.json(order.items as unknown as postgres.JSONValue)}
+      )
+    `;
+    return true;
+  } catch (err) {
+    console.error("Failed to persist order", err);
+    return false;
+  }
+}
+
+export async function listOrders(): Promise<OrderRecord[]> {
+  const sql = getDb();
+  if (!sql) return [];
+
+  const rows = await sql<OrderRecord[]>`
+    SELECT * FROM orders ORDER BY created_at DESC
+  `;
+  return rows;
+}
+
+export async function updateOrderStatus(
+  orderNumber: string,
+  status: OrderStatus
+): Promise<boolean> {
+  const sql = getDb();
+  if (!sql) return false;
+
+  const result = await sql`
+    UPDATE orders SET status = ${status} WHERE order_number = ${orderNumber}
+  `;
+  return result.count > 0;
 }
 
 function lineItemsText(items: OrderItem[]): string {

@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:setup": "node --env-file=.env.local scripts/init-db.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
     "next": "15.5.20",
+    "postgres": "^3.4.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^5.7.0",
