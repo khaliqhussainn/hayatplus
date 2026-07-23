@@ -4,10 +4,29 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiShoppingBag } from "react-icons/fi";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { navLinks } from "@/lib/data";
+import { useCart } from "@/lib/cart-context";
+
+function CartIcon() {
+  const { count } = useCart();
+  return (
+    <Link
+      href="/cart"
+      aria-label="View cart"
+      className="relative inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-ink hover:text-forest hover:border-forest transition-colors"
+    >
+      <FiShoppingBag size={18} />
+      {count > 0 && (
+        <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[10px] font-bold">
+          {count}
+        </span>
+      )}
+    </Link>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,19 +71,23 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href="#contact" variant="primary">
+        <div className="hidden lg:flex items-center gap-3">
+          <CartIcon />
+          <Button href="/product" variant="primary">
             Order Now
           </Button>
         </div>
 
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-ink"
-        >
-          {open ? <FiX size={20} /> : <FiMenu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <CartIcon />
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-ink"
+          >
+            {open ? <FiX size={20} /> : <FiMenu size={20} />}
+          </button>
+        </div>
       </Container>
 
       <AnimatePresence>
@@ -87,7 +110,7 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button href="#contact" variant="primary" className="w-full mt-2">
+              <Button href="/product" variant="primary" className="w-full mt-2">
                 Order Now
               </Button>
             </Container>

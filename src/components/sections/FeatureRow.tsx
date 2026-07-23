@@ -86,7 +86,7 @@ export default function FeatureRow() {
                   </div>
                 ))}
               </div>
-              <Button href="#contact" variant="secondary" className="w-full">
+              <Button href="/product" variant="secondary" className="w-full">
                 View Full Nutrition Facts
               </Button>
             </div>

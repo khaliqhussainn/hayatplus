@@ -103,7 +103,7 @@ export default function Hero() {
 
             <FadeIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 pt-1">
-                <Button href="#contact" variant="primary" icon={<FiArrowRight />}>
+                <Button href="/product" variant="primary" icon={<FiArrowRight />}>
                   Shop Now
                 </Button>
                 <Button href="#ingredients" variant="secondary" icon={<FiPlay />}>

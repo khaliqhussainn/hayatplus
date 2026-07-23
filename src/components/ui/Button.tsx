@@ -6,16 +6,30 @@ import { ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary";
 
-interface ButtonProps {
-  href: string;
+interface BaseButtonProps {
   children: ReactNode;
   variant?: ButtonVariant;
   icon?: ReactNode;
   className?: string;
+  disabled?: boolean;
 }
 
+interface LinkButtonProps extends BaseButtonProps {
+  href: string;
+  onClick?: never;
+  type?: never;
+}
+
+interface ClickButtonProps extends BaseButtonProps {
+  href?: never;
+  onClick?: () => void;
+  type?: "button" | "submit";
+}
+
+type ButtonProps = LinkButtonProps | ClickButtonProps;
+
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-[18px] px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors duration-300";
+  "inline-flex items-center justify-center gap-2 rounded-[18px] px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
@@ -26,6 +40,9 @@ const variants: Record<ButtonVariant, string> = {
 
 export default function Button({
   href,
+  onClick,
+  type = "button",
+  disabled,
   children,
   variant = "primary",
   icon,
@@ -33,15 +50,27 @@ export default function Button({
 }: ButtonProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
+      whileHover={disabled ? undefined : { scale: 1.03 }}
+      whileTap={disabled ? undefined : { scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
       className="inline-block"
     >
-      <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
-        {children}
-        {icon}
-      </Link>
+      {href ? (
+        <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+          {children}
+          {icon}
+        </Link>
+      ) : (
+        <button
+          type={type}
+          onClick={onClick}
+          disabled={disabled}
+          className={`${base} ${variants[variant]} ${className}`}
+        >
+          {children}
+          {icon}
+        </button>
+      )}
     </motion.div>
   );
 }

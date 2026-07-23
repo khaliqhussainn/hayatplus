@@ -224,6 +224,49 @@ export const faqs = [
   },
 ] as const;
 
+export const product = {
+  slug: "heart-tonic",
+  name: "Hayat+ Heart Tonic",
+  tagline: "Nature's Daily Support for a Healthy Heart",
+  description:
+    "Hayat+ Heart Tonic is a carefully crafted herbal blend made from Ginger, Garlic, Lemon, Honey and Apple Cider Vinegar to support heart health, healthy circulation, immune wellness and everyday vitality.",
+  longDescription:
+    "Made in small batches with quality ingredients and nothing more than necessary, Hayat+ Heart Tonic is a daily ritual rooted in five time-trusted botanicals. No fillers, no artificial preservatives — just a thoughtfully balanced blend crafted for consistent quality in every bottle.",
+  image: "/images/hero/hero-product-ingredients.png",
+} as const;
+
+// TODO: replace with real pricing before launch (currency: PKR)
+export const productSizes = [
+  { id: "250ml", label: "250 ML", price: 1200 },
+  { id: "500ml", label: "500 ML", price: 2200 },
+] as const;
+
+export type ProductSizeId = (typeof productSizes)[number]["id"];
+
+export const paymentMethods = [
+  {
+    id: "cod",
+    label: "Cash on Delivery",
+    description: "Pay in cash when your order arrives at your doorstep.",
+  },
+  {
+    id: "advance",
+    label: "Advance Payment",
+    description:
+      "Pay via bank transfer and confirm your order with a screenshot on WhatsApp.",
+  },
+] as const;
+
+export type PaymentMethodId = (typeof paymentMethods)[number]["id"];
+
+// TODO: replace with real bank account details before launch
+export const bankDetails = {
+  bankName: "[Add Your Bank Name]",
+  accountTitle: "[Add Account Title]",
+  accountNumber: "[Add Account Number]",
+  iban: "[Add IBAN — optional]",
+} as const;
+
 export const contactInfo = {
   whatsapp: "+92 309 3868046",
   email: "hayaatpluss@gmail.com",
