@@ -48,7 +48,7 @@ export default function Header() {
       }`}
     >
       <Container className="flex items-center justify-between py-5">
-        <Link href="#top" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/images/logo/hayat-logo.png"
             alt="Hayat+"

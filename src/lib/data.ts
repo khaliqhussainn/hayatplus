@@ -236,8 +236,8 @@ export const product = {
 } as const;
 
 export const productSizes = [
-  { id: "250ml", label: "250 ML", price: 1700 },
-  { id: "500ml", label: "500 ML", price: 3000 },
+  { id: "250ml", label: "250 ML", price: 1699 },
+  { id: "500ml", label: "500 ML", price: 2999 },
 ] as const;
 
 export type ProductSizeId = (typeof productSizes)[number]["id"];
@@ -289,32 +289,28 @@ export const socialLinks = [
 ] as const;
 
 export const navLinks = [
-  { href: "#top", label: "Home" },
-  { href: "#ingredients", label: "Ingredients" },
-  { href: "#benefits", label: "Benefits" },
-  { href: "#how-to-use", label: "How to Use" },
-  { href: "#about", label: "About" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/product", label: "Products" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const footerLinks = {
   quickLinks: [
-    { href: "#top", label: "Home" },
-    { href: "#ingredients", label: "Ingredients" },
-    { href: "#benefits", label: "Benefits" },
-    { href: "#how-to-use", label: "How to Use" },
+    { href: "/", label: "Home" },
+    { href: "/product", label: "Products" },
+    { href: "/#benefits", label: "Benefits" },
+    { href: "/#how-to-use", label: "How to Use" },
   ],
   company: [
-    { href: "#about", label: "About Us" },
-    { href: "#ingredients", label: "Our Formula" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#ingredients", label: "Our Formula" },
+    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/#contact", label: "Contact" },
   ],
   support: [
-    { href: "#faq", label: "FAQ" },
-    { href: "#contact", label: "Shipping & Delivery" },
-    { href: "#contact", label: "Returns & Refunds" },
-    { href: "#contact", label: "Privacy Policy" },
+    { href: "/#faq", label: "FAQ" },
+    { href: "/#contact", label: "Shipping & Delivery" },
+    { href: "/#contact", label: "Returns & Refunds" },
+    { href: "/#contact", label: "Privacy Policy" },
   ],
 } as const;
