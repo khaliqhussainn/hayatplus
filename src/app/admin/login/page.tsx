@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { FiLock, FiLoader } from "react-icons/fi";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -46,6 +47,14 @@ export default function AdminLoginPage() {
           className="w-full max-w-sm rounded-[18px] border border-line bg-white p-8 flex flex-col gap-5"
         >
           <div className="flex flex-col items-center gap-3 text-center">
+            <Image
+              src="/images/logo/hayat-logo.png"
+              alt="Hayat+"
+              width={900}
+              height={293}
+              priority
+              className="h-9 w-auto"
+            />
             <span className="flex items-center justify-center w-12 h-12 rounded-full bg-beige text-forest">
               <FiLock size={20} />
             </span>
