@@ -8,7 +8,8 @@ import {
   useState,
   ReactNode,
 } from "react";
-import { productSizes, ProductSizeId } from "@/lib/data";
+import { ProductSizeId } from "@/lib/data";
+import { getDiscountedPrice } from "@/lib/pricing";
 
 export interface CartItem {
   sizeId: ProductSizeId;
@@ -30,7 +31,7 @@ const CartContext = createContext<CartContextValue | null>(null);
 const STORAGE_KEY = "hayatplus_cart";
 
 function priceFor(sizeId: ProductSizeId): number {
-  return productSizes.find((s) => s.id === sizeId)?.price ?? 0;
+  return getDiscountedPrice(sizeId);
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {

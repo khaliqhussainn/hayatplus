@@ -258,12 +258,12 @@ export const paymentMethods = [
 
 export type PaymentMethodId = (typeof paymentMethods)[number]["id"];
 
-// TODO: replace with real bank account details before launch
 export const bankDetails = {
-  bankName: "[Add Your Bank Name]",
-  accountTitle: "[Add Account Title]",
-  accountNumber: "[Add Account Number]",
-  iban: "[Add IBAN — optional]",
+  bankName: "Faysal Bank",
+  accountTitle: "Maryam Nadeem",
+  accountNumber: "3188528000007304",
+  branchCode: "3188",
+  iban: "PK87FAYS3188528000007304",
 } as const;
 
 export const contactInfo = {

@@ -105,6 +105,7 @@ export default function OrderConfirmationPage() {
                     { label: "Bank", value: bankDetails.bankName },
                     { label: "Account Title", value: bankDetails.accountTitle },
                     { label: "Account Number", value: bankDetails.accountNumber },
+                    { label: "Branch Code", value: bankDetails.branchCode },
                     { label: "IBAN", value: bankDetails.iban },
                   ].map((row) => (
                     <div

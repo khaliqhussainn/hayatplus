@@ -1,6 +1,7 @@
 import type postgres from "postgres";
 import { productSizes, bankDetails } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
+import { getDiscountedPrice } from "@/lib/pricing";
 import { getDb } from "@/lib/db";
 import type { OrderItem, OrderPayload, OrderRecord, OrderStatus } from "@/lib/order-types";
 
@@ -70,7 +71,9 @@ function lineItemsText(items: OrderItem[]): string {
     .map((item) => {
       const size = productSizes.find((s) => s.id === item.sizeId);
       const label = size?.label ?? item.sizeId;
-      const lineTotal = size ? formatPrice(size.price * item.qty) : "";
+      const lineTotal = size
+        ? formatPrice(getDiscountedPrice(item.sizeId) * item.qty)
+        : "";
       return `- Hayat+ Heart Tonic (${label}) × ${item.qty} — ${lineTotal}`;
     })
     .join("\n");
@@ -107,6 +110,8 @@ export function buildCustomerConfirmationEmail(orderNumber: string, order: Order
 Bank: ${bankDetails.bankName}
 Account Title: ${bankDetails.accountTitle}
 Account Number: ${bankDetails.accountNumber}
+Branch Code: ${bankDetails.branchCode}
+IBAN: ${bankDetails.iban}
 
 Once paid, please send your payment screenshot along with your order number (${orderNumber}) to our WhatsApp. Your order will be confirmed as soon as we verify the payment.`
     : `Your order will be delivered via Cash on Delivery. We'll contact you shortly to confirm your delivery details.`;
