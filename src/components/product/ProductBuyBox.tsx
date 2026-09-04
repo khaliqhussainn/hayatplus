@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMinus, FiPlus, FiShoppingBag, FiCheck, FiFeather, FiSlash, FiDroplet } from "react-icons/fi";
+import { FiMinus, FiPlus, FiShoppingBag, FiCheck, FiFeather, FiSlash, FiDroplet, FiTruck } from "react-icons/fi";
 import Button from "@/components/ui/Button";
 import { useCart } from "@/lib/cart-context";
 import { productSizes, heroTrustBadges, ProductSizeId } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
-import { DISCOUNT_PERCENT, DISCOUNT_END_LABEL, getDiscountedPrice } from "@/lib/pricing";
+import { FREE_DELIVERY_LABEL } from "@/lib/offer";
 
 const badgeIconMap = {
   leaf: FiFeather,
@@ -39,21 +39,15 @@ export default function ProductBuyBox() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-gold">
-          {DISCOUNT_PERCENT}% OFF — Independence Day Sale
+        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-forest/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-forest">
+          <FiTruck size={12} /> {FREE_DELIVERY_LABEL}
         </span>
         <div className="flex items-baseline gap-3">
           <span className="text-3xl sm:text-4xl font-bold text-forest">
-            {formatPrice(getDiscountedPrice(sizeId))}
-          </span>
-          <span className="text-base text-ink/40 line-through">
             {formatPrice(selectedSize.price)}
           </span>
           <span className="text-sm text-ink/50">/ bottle</span>
         </div>
-        <span className="text-xs text-ink/50">
-          Offer valid until {DISCOUNT_END_LABEL}
-        </span>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -70,14 +64,7 @@ export default function ProductBuyBox() {
               }`}
             >
               <span className="block text-sm font-semibold text-ink">{size.label}</span>
-              <span className="flex items-center gap-1.5">
-                <span className="text-xs font-semibold text-forest">
-                  {formatPrice(getDiscountedPrice(size.id))}
-                </span>
-                <span className="text-[11px] text-ink/40 line-through">
-                  {formatPrice(size.price)}
-                </span>
-              </span>
+              <span className="block text-xs text-ink/55">{formatPrice(size.price)}</span>
             </button>
           ))}
         </div>

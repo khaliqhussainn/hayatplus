@@ -10,7 +10,6 @@ import FadeIn from "@/components/ui/FadeIn";
 import { useCart } from "@/lib/cart-context";
 import { paymentMethods, productSizes, PaymentMethodId } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
-import { getDiscountedPrice } from "@/lib/pricing";
 
 interface FormState {
   name: string;
@@ -31,11 +30,6 @@ const initialForm: FormState = {
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, subtotal, clear } = useCart();
-  const originalSubtotal = items.reduce((sum, item) => {
-    const size = productSizes.find((s) => s.id === item.sizeId);
-    return sum + (size?.price ?? 0) * item.qty;
-  }, 0);
-  const savings = originalSubtotal - subtotal;
   const [form, setForm] = useState<FormState>(initialForm);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodId>("cod");
   const [submitting, setSubmitting] = useState(false);
@@ -237,18 +231,16 @@ export default function CheckoutPage() {
                           {size.label} × {item.qty}
                         </span>
                         <span className="font-semibold text-ink">
-                          {formatPrice(getDiscountedPrice(item.sizeId) * item.qty)}
+                          {formatPrice(size.price * item.qty)}
                         </span>
                       </div>
                     );
                   })}
                 </div>
-                {savings > 0 && (
-                  <div className="flex items-center justify-between text-sm text-forest font-medium">
-                    <span>Independence Day Sale (14% off)</span>
-                    <span>-{formatPrice(savings)}</span>
-                  </div>
-                )}
+                <div className="flex items-center justify-between text-sm text-ink/65">
+                  <span>Delivery</span>
+                  <span className="font-semibold text-forest">Free</span>
+                </div>
                 <div className="flex items-center justify-between pt-4 border-t border-line">
                   <span className="text-base font-bold text-ink">Total</span>
                   <span className="text-lg font-bold text-forest">

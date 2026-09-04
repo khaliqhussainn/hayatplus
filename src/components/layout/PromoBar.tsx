@@ -1,9 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { FiGift } from "react-icons/fi";
+import { FiTruck } from "react-icons/fi";
 import Container from "@/components/ui/Container";
-import { DISCOUNT_PERCENT, DISCOUNT_LABEL, DISCOUNT_END_LABEL } from "@/lib/pricing";
+import { FREE_DELIVERY_LABEL } from "@/lib/offer";
 
 export default function PromoBar() {
   const pathname = usePathname();
@@ -12,10 +12,9 @@ export default function PromoBar() {
   return (
     <div className="bg-forest text-white">
       <Container className="flex items-center justify-center gap-2 py-2.5 text-center">
-        <FiGift size={14} className="flex-shrink-0" />
+        <FiTruck size={14} className="flex-shrink-0" />
         <span className="text-[11px] sm:text-xs font-semibold tracking-wide">
-          {DISCOUNT_LABEL}: Get {DISCOUNT_PERCENT}% OFF on Hayat+ Heart Tonic — offer
-          valid until {DISCOUNT_END_LABEL}
+          {FREE_DELIVERY_LABEL} on Every Order of Hayat+ Heart Tonic
         </span>
       </Container>
     </div>

@@ -9,16 +9,9 @@ import FadeIn from "@/components/ui/FadeIn";
 import { useCart } from "@/lib/cart-context";
 import { product, productSizes } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
-import { getDiscountedPrice } from "@/lib/pricing";
 
 export default function CartPage() {
   const { items, updateQty, removeItem, subtotal } = useCart();
-
-  const originalSubtotal = items.reduce((sum, item) => {
-    const size = productSizes.find((s) => s.id === item.sizeId);
-    return sum + (size?.price ?? 0) * item.qty;
-  }, 0);
-  const savings = originalSubtotal - subtotal;
 
   if (items.length === 0) {
     return (
@@ -56,7 +49,6 @@ export default function CartPage() {
               {items.map((item) => {
                 const size = productSizes.find((s) => s.id === item.sizeId);
                 if (!size) return null;
-                const unitPrice = getDiscountedPrice(item.sizeId);
                 return (
                   <div
                     key={item.sizeId}
@@ -77,23 +69,13 @@ export default function CartPage() {
                         {product.name}
                       </span>
                       <span className="text-xs text-ink/50">{size.label}</span>
-                      <span className="flex items-center gap-1.5 sm:hidden">
-                        <span className="text-sm font-semibold text-forest">
-                          {formatPrice(unitPrice)}
-                        </span>
-                        <span className="text-xs text-ink/40 line-through">
-                          {formatPrice(size.price)}
-                        </span>
+                      <span className="text-sm font-semibold text-forest sm:hidden">
+                        {formatPrice(size.price)}
                       </span>
                     </div>
 
-                    <span className="hidden sm:flex flex-col items-end w-20 text-right">
-                      <span className="text-sm font-semibold text-ink/70">
-                        {formatPrice(unitPrice)}
-                      </span>
-                      <span className="text-xs text-ink/40 line-through">
-                        {formatPrice(size.price)}
-                      </span>
+                    <span className="hidden sm:block text-sm font-semibold text-ink/70 w-20 text-right">
+                      {formatPrice(size.price)}
                     </span>
 
                     <div className="flex items-center gap-2 rounded-full border border-line px-1.5 py-1.5">
@@ -117,7 +99,7 @@ export default function CartPage() {
                     </div>
 
                     <span className="hidden sm:block text-sm font-bold text-ink w-20 text-right">
-                      {formatPrice(unitPrice * item.qty)}
+                      {formatPrice(size.price * item.qty)}
                     </span>
 
                     <button
@@ -148,15 +130,9 @@ export default function CartPage() {
                   <span>Subtotal</span>
                   <span>{formatPrice(subtotal)}</span>
                 </div>
-                {savings > 0 && (
-                  <div className="flex items-center justify-between text-forest font-medium">
-                    <span>Independence Day Sale (14% off)</span>
-                    <span>-{formatPrice(savings)}</span>
-                  </div>
-                )}
                 <div className="flex items-center justify-between text-ink/65">
                   <span>Delivery</span>
-                  <span>Calculated at checkout</span>
+                  <span className="font-semibold text-forest">Free</span>
                 </div>
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-line">

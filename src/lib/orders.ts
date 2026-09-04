@@ -1,7 +1,6 @@
 import type postgres from "postgres";
 import { productSizes, bankDetails } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
-import { getDiscountedPrice } from "@/lib/pricing";
 import { getDb } from "@/lib/db";
 import type { OrderItem, OrderPayload, OrderRecord, OrderStatus } from "@/lib/order-types";
 
@@ -71,9 +70,7 @@ function lineItemsText(items: OrderItem[]): string {
     .map((item) => {
       const size = productSizes.find((s) => s.id === item.sizeId);
       const label = size?.label ?? item.sizeId;
-      const lineTotal = size
-        ? formatPrice(getDiscountedPrice(item.sizeId) * item.qty)
-        : "";
+      const lineTotal = size ? formatPrice(size.price * item.qty) : "";
       return `- Hayat+ Heart Tonic (${label}) × ${item.qty} — ${lineTotal}`;
     })
     .join("\n");
