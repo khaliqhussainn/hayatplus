@@ -4,6 +4,7 @@ import { FiFeather, FiRefreshCw, FiDroplet, FiCalendar } from "react-icons/fi";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import ProductBuyBox from "@/components/product/ProductBuyBox";
+import Reviews from "@/components/sections/Reviews";
 import {
   product,
   ingredients,
@@ -173,6 +174,8 @@ export default function ProductPage() {
           </div>
         </Container>
       </section>
+
+      <Reviews />
     </div>
   );
 }

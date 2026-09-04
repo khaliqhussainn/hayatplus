@@ -304,7 +304,7 @@ export const footerLinks = {
   company: [
     { href: "/#about", label: "About Us" },
     { href: "/#ingredients", label: "Our Formula" },
-    { href: "/#testimonials", label: "Testimonials" },
+    { href: "/product#reviews", label: "Reviews" },
     { href: "/#contact", label: "Contact" },
   ],
   support: [
